@@ -121,8 +121,9 @@ public class CityConnect {
 	}
 
 	public static String executeCommand(String userCommand) {
-		if (userCommand.trim().equals(""))
+		if (userCommand.trim().equals("")) {
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
+		}
 
 		String commandTypeString = getFirstWord(userCommand);
 
@@ -166,8 +167,9 @@ public class CityConnect {
 	 *            is the first word of the user command
 	 */
 	private static COMMAND_TYPE determineCommandType(String commandTypeString) {
-		if (commandTypeString == null)
+		if (commandTypeString == null) {
 			throw new Error("command type string cannot be null!");
+		}
 
 		if (commandTypeString.equalsIgnoreCase("addroute")) {
 			return COMMAND_TYPE.ADD_ROUTE;
@@ -203,9 +205,7 @@ public class CityConnect {
 		if (position == NOT_FOUND) {
 			return String.format(MESSAGE_NO_ROUTE, newStartLocation,
 					newEndLocation);
-		} 
-		else 
-		{
+		} else {
 			return String.format(MESSAGE_DISTANCE, newStartLocation, newEndLocation,
 					route[position][STORAGE_POSITION_DISTANCE]);
 		}
@@ -246,7 +246,7 @@ public class CityConnect {
 		
 		String[] parameters = splitParameters(removeFirstWord(userCommand));
 		
-		if (parameters.length < PARAM_SIZE_FOR_ADD_ROUTE){
+		if (parameters.length < PARAM_SIZE_FOR_ADD_ROUTE) {
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
 		}
 
@@ -254,13 +254,13 @@ public class CityConnect {
 		String newEndLocation = parameters[PARAM_POSITION_END_LOCATION];
 		String distance = parameters[PARAM_POSITION_DISTANCE];
 
-		if (!isPositiveNonZeroInt(distance)){
+		if (!isPositiveNonZeroInt(distance)) {
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
 		}
 
 		int slotPosition = location(newStartLocation, newEndLocation);
 
-		if (slotPosition == SLOT_UNAVAILABLE){
+		if (slotPosition == SLOT_UNAVAILABLE) {
 			return MESSAGE_NO_SPACE;
 		}
 
@@ -308,7 +308,7 @@ public class CityConnect {
 			String endLocation1, String startLocation2, String endLocation2) {
 
 		if ((startLocation1 == null) || (endLocation1 == null)
-				&& (startLocation2 == null) || (endLocation2 == null)){
+				&& (startLocation2 == null) || (endLocation2 == null)) {
 			throw new Error("Route end points cannot be null");
 		}
 
