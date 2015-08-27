@@ -139,7 +139,6 @@ public class CityConnect {
 			case EXIT:
 				System.exit(0);
 			default:
-				//throw an error if the command is not recognized
 				throw new Error("Unrecognized command type");
 		}
 		/*
